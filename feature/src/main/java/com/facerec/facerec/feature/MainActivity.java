@@ -10,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton button;
+    private ImageButton button; // ImageButton leads to camera
+    private Button azbut; // Button leads to Azure Facial Detection
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -34,14 +36,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
-        button = (ImageButton) findViewById(R.id.imageButton);
+        button = (ImageButton) findViewById(R.id.imageButton); // ImageButton ID
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openCamActivity();
             }
+        }); // "Listens" for activation of button from user
+
+        azbut = (Button) findViewById(R.id.azButton); // Button ID
+        azbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAzActivity();
+            }
         });
+
     }
+
+    public void openAzActivity() {
+        Intent intent = new Intent(this, AzActivity.class);
+        startActivity(intent);
+    }
+
 
     public void openCamActivity() {
         Intent intent = new Intent(this, CamActivity.class);
