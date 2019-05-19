@@ -5,11 +5,13 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
         classpath 'com.google.android.gms:play-services-location:16.0.0'
         //classpath 'com.google.android.gms:play-services:12.0.1'
+        classpath 'com.github.delight-im:Android-SimpleLocation:v1.0.1'
 
 
         // NOTE: Do not place your application dependencies here; they belong

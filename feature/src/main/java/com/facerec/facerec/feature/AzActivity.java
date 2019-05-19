@@ -20,12 +20,15 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import android.location.Location;
 
 public class AzActivity extends AppCompatActivity {
 
     private final int PICK_IMAGE = 1;
     private ProgressDialog detectionProgressDialog;
+    private Location location = new Location(String.valueOf(this));
+    double lat = location.getLatitude();
+    double lon = location.getLongitude();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class AzActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(
                         intent, "Select Picture"), PICK_IMAGE);
 
+                // --- GRAB COORDINATES BEFORE COMPOSING EMAIL --- //
+                //getCor();
                 // --- EMAIL FUNCTIONALITY --- //
                 sendEmail();
             }
@@ -57,7 +62,10 @@ public class AzActivity extends AppCompatActivity {
         intent1.setType("text/plain");
         intent1.putExtra(Intent.EXTRA_EMAIL  , new String[]{"Recipient"});
         intent1.putExtra(Intent.EXTRA_SUBJECT, "subject");
-        intent1.putExtra(Intent.EXTRA_TEXT   , "Message Body");
+        intent1.putExtra(Intent.EXTRA_TEXT , "Longitude: ");//+location.getLongitude());
+        intent1.putExtra(Intent.EXTRA_TEXT , "Latitude: ");//+location.getLatitude());
+        Toast.makeText(AzActivity.this, "Latitude: "+lat, Toast.LENGTH_SHORT).show();
+        Toast.makeText(AzActivity.this, "Longitude: "+lon, Toast.LENGTH_SHORT).show();
 
         try {
             startActivity(Intent.createChooser(intent1, "Send mail..."));
