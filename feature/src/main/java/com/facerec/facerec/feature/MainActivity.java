@@ -16,9 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("WrongViewCast")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // When Activity is created
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // Layout defined in .xml is the chosen layout
+        // NOTE: the content_activity.xml describes activity content - empty activity has no content
         /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,12 +51,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    public void openAzActivity() {
+    // NOTE: Intent used when data is planning on being passed/ moved
+    public void openAzActivity() { // Redirects program to a new activity
         Intent intent = new Intent(this, AzActivity.class);
         startActivity(intent);
     }
-
 
     public void openCamActivity() {
         Intent intent = new Intent(this, CamActivity.class);
