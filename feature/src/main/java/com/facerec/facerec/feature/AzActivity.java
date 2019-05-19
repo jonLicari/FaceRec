@@ -62,8 +62,9 @@ public class AzActivity extends AppCompatActivity {
         intent1.setType("text/plain");
         intent1.putExtra(Intent.EXTRA_EMAIL  , new String[]{"Recipient"});
         intent1.putExtra(Intent.EXTRA_SUBJECT, "subject");
-        intent1.putExtra(Intent.EXTRA_TEXT , "Longitude: ");//+location.getLongitude());
-        intent1.putExtra(Intent.EXTRA_TEXT , "Latitude: ");//+location.getLatitude());
+        String msg = "Longitude: " + lon + "\n" + "Latitude: " + lat;
+        intent1.putExtra(Intent.EXTRA_TEXT , msg);//+location.getLongitude());
+        //intent1.putExtra(Intent.EXTRA_TEXT , "Latitude: ");//+location.getLatitude());
         Toast.makeText(AzActivity.this, "Latitude: "+lat, Toast.LENGTH_SHORT).show();
         Toast.makeText(AzActivity.this, "Longitude: "+lon, Toast.LENGTH_SHORT).show();
 
